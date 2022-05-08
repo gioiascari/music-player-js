@@ -25,3 +25,56 @@ let trackI = 0;
 let isPlaying = false;
 let isRandom = false;
 let timer;
+
+//Music List
+const musicList = [
+  {
+    author: "Alan Walker",
+    song: "Faded",
+    audio: "audio/music_Faded.mp3",
+    image: "img/faded.png",
+  },
+];
+
+loadTrack(trackI);
+
+function loadTrack(trackI) {
+  clearInterval(timer);
+  reset();
+  //   Inizializzo i componenti per inserirci i dati
+  currentTrack.src = musicList[trackI].audio;
+  currentTrack.load();
+  //   Inserisco ad ogni canzone i dati adatti
+  trackArt.style.backgroundImage = "url(" + musicList[trackI].image + ")";
+  trackName.textContent = musicList[trackI].song;
+  trackAuthor.textContent = musicList[trackI].author;
+  // Indice che mi riferisce quale canzone sto ascoltando sulla parte superiore del player
+  nowPlaying.textContent =
+    "Playing music" + (trackI + 1) + "Of" + musicList.length;
+  timer = setInterval(setUpdate, 1000);
+  currentTrack.addEventListener("ended" + nextBtn);
+
+  randomColor(); //Funzione sfondo randomico
+}
+
+// Creo una funzione che mi crea uno sfondo randomico ogni volta che la pagina viene ricaricata
+function randomColor() {
+  //Hex color per generare uno sfondo randomico
+  let hexValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
+  let hex;
+  function rColor(hex) {
+    for (let i = 0; i < 6; i++) {
+      let x = Math.round(Math.random() * hexValue.length);
+      let y = hex[x];
+      hex += y;
+    }
+    return hex;
+  }
+  let color1 = rColor("#");
+  let color2 = rColor("#");
+  let angle = "to right";
+  let gradientColor =
+    "linear-gradient(" + angle + "," + color1 + "," + color2 + ")";
+  //Inserisco il colore generato come background color del body
+  document.body.style.background = gradientColor;
+}
