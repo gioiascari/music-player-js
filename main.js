@@ -17,5 +17,11 @@ let volumeSlider = document.querySelector(".volume-slider");
 let currentTime = document.querySelector(".current-time");
 let totalDuration = document.querySelector(".total-duration");
 let waves = document.getElementById("waves");
+let currentTrack = document.createElement("audio");
 
 // /Utilities
+
+let trackI = 0;
+let isPlaying = false;
+let isRandom = false;
+let timer;
