@@ -78,3 +78,26 @@ function randomColor() {
   //Inserisco il colore generato come background color del body
   document.body.style.background = gradientColor;
 }
+function reset() {
+  currentTime.textContent = "00:00";
+  totalDuration.textContent = "00:00";
+  seekSlider.value = 0;
+}
+// Function random track
+function randomTrack() {
+  isPlaying ? pauseRandom() : playRandom();
+}
+// Function pause track
+function pauseRandom() {
+  isRandom = true;
+  randomIcon.classList.add("randomActive");
+}
+function playRandom() {
+  isRandom = false;
+  randomIcon.classList.remove("randomActive");
+}
+function repeatTrack() {
+  let currentI = trackI;
+  loadTrack(currentI);
+  playTrack(); // all'interno ci inserisco anche la funzione per far partire il brano
+}
