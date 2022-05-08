@@ -19,3 +19,61 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 40px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-art {
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  border: 1px solid #fff;
+  -webkit-border-radius: 190px;
+  border-radius: 190px;
+  -webkit-box-shadow: 0px 5px 5px #ccc;
+}
+
+.now-playing {
+  font-size: 20px;
+}
+.track-name {
+  font-size: 30px;
+}
+.track-author {
+  font-size: 20px;
+  padding-top: 10px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.random-track,
+.prev-track,
+.playPause-track,
+.next-track,
+.repeat-track {
+  padding: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.random-track:hover,
+.prev-track:hover,
+.playPause-track:hover,
+.next-track:hover,
+.repeat-track:hover {
+  opacity: 1;
+}
+.slider-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.seek-slider,
+.volume-slider {
+  appearance: none;
+  -webkit-appearance: none;
+}
