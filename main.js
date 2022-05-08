@@ -11,4 +11,11 @@ let nextBtn = document.querySelector(".next-track");
 let prevBtn = document.querySelector(".prev-track");
 let repeatBtn = document.querySelector(".repeat-track");
 let randomBtn = document.querySelector(".random-track");
+// Volume up/down, current time section
+let seekSlider = document.querySelector(".seek-slider");
+let volumeSlider = document.querySelector(".volume-slider");
+let currentTime = document.querySelector(".current-time");
+let totalDuration = document.querySelector(".total-duration");
+let waves = document.getElementById("waves");
+
 // /Utilities
