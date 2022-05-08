@@ -87,17 +87,28 @@ function reset() {
 function randomTrack() {
   isPlaying ? pauseRandom() : playRandom();
 }
-// Function pause track
-function pauseRandom() {
+function playRandom() {
   isRandom = true;
   randomIcon.classList.add("randomActive");
 }
-function playRandom() {
+function pauseRandom() {
   isRandom = false;
   randomIcon.classList.remove("randomActive");
 }
+
 function repeatTrack() {
   let currentI = trackI;
   loadTrack(currentI);
   playTrack(); // all'interno ci inserisco anche la funzione per far partire il brano
+}
+
+function playPauseTrack() {
+  isPlaying ? pauseTrack() : playTrack();
+}
+function playTrack() {
+  currentTrack.play();
+  isPlaying = true;
+  trackArt.classList.add("rotate");
+  waves.classList.add("loader");
+  playBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
 }
