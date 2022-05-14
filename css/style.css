@@ -4,6 +4,12 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+.container_g {
+  display: flex;
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+}
 /* ------------------/Utilities---------------------- */
 .player {
   height: 90vh;
@@ -42,7 +48,7 @@
 .track-name {
   font-size: 30px;
 }
-.track-author {
+.track-artist {
   font-size: 20px;
   padding-top: 10px;
 }
@@ -114,12 +120,10 @@ i.fa-volume-down,
 i.fa-volume-up {
   padding: 10px;
 }
-i.fa-random,
 i.fa-step-backward,
-i.fa-step-farward,
 i.fa-play-circle,
-i.fa-step-forward,
-i.fa-repeat {
+i.fa-pause-circle,
+i.fa-step-forward {
   cursor: pointer;
 }
 
@@ -154,7 +158,7 @@ i.fa-repeat {
 @keyframes animate {
   50% {
     height: 20%;
-    background: red;
+    background: orange;
   }
   100% {
     height: 100%;
@@ -174,4 +178,10 @@ i.fa-repeat {
 }
 .stroke:nth-child(5) {
   animation-delay: 0.6s;
+}
+.stroke:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.stroke:nth-child(7) {
+  animation-delay: 0s;
 }

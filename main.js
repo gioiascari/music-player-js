@@ -4,13 +4,11 @@ console.log("Ok Js:)");
 let nowPlaying = document.querySelector(".now-playing");
 let trackArt = document.querySelector(".track-art");
 let trackName = document.querySelector(".track-name");
-let trackAuthor = document.querySelector(".track-author");
+let trackArtist = document.querySelector(".track-artist");
 // Buttons section
-let playBtn = document.querySelector(".playPause-track");
+let playPauseBtn = document.querySelector(".playPause-track");
 let nextBtn = document.querySelector(".next-track");
 let prevBtn = document.querySelector(".prev-track");
-let repeatBtn = document.querySelector(".repeat-track");
-let randomBtn = document.querySelector(".random-track");
 // Volume up/down, current time section
 let seekSlider = document.querySelector(".seek-slider");
 let volumeSlider = document.querySelector(".volume-slider");
@@ -30,27 +28,27 @@ let timer_loader;
 //Music List
 const musicList = [
   {
-    author: "Alan Walker",
+    artist: "Alan Walker",
     song: "Faded",
     audio: "audio/music_Faded.mp3",
     image: "img/faded.png",
   },
   {
-    author: "Alan Walker",
-    song: "Faded",
-    audio: "audio/music_Faded.mp3",
+    artist: "Frank Sinatra",
+    song: "That's Life",
+    audio: "audio/thats-life.mp3",
     image: "img/faded.png",
   },
   {
-    author: "Alan Walker",
-    song: "Faded",
-    audio: "audio/music_Faded.mp3",
+    artist: "Mattafix",
+    song: "Big City Life",
+    audio: "audio/big-city-life.mp3",
     image: "img/faded.png",
   },
   {
-    author: "Alan Walker",
-    song: "Faded",
-    audio: "audio/music_Faded.mp3",
+    artist: "Eminem",
+    song: "Just Lose It",
+    audio: "audio/just-lose-it.mp3",
     image: "img/faded.png",
   },
 ];
@@ -58,6 +56,8 @@ const musicList = [
 loadTrack(trackI);
 
 function loadTrack(trackI) {
+  randomColor();
+
   clearInterval(timer_loader);
   reset();
   //   Inizializzo i componenti per inserirci i dati
@@ -66,36 +66,54 @@ function loadTrack(trackI) {
   //   Inserisco ad ogni canzone i dati adatti
   trackArt.style.backgroundImage = "url(" + musicList[trackI].image + ")";
   trackName.textContent = musicList[trackI].song;
-  trackAuthor.textContent = musicList[trackI].author;
+  trackArtist.textContent = musicList[trackI].artist;
   // Indice che mi riferisce quale canzone sto ascoltando sulla parte superiore del player
   nowPlaying.textContent =
     "Playing music" + (trackI + 1) + "Of" + musicList.length;
   timer_loader = setInterval(setUpdate, 1000);
-  currentTrack.addEventListener("ended" + nextBtn);
+  currentTrack.addEventListener("ended" + nextTrack);
 
-  randomColor(); //Funzione sfondo randomico
+  //Funzione sfondo randomico
 }
 
 // Creo una funzione che mi crea uno sfondo randomico ogni volta che la pagina viene ricaricata
 function randomColor() {
-  //Hex color per generare uno sfondo randomico
-  let hexValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
-  let hex;
-  function rColor(hex) {
+  let hex = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+  ];
+  let a;
+
+  function populate(a) {
     for (let i = 0; i < 6; i++) {
       let x = Math.round(Math.random() * 14);
-      let y = hexValue[x];
-      hex += y;
+      let y = hex[x];
+      a += y;
     }
-    return hex;
+    return a;
   }
-  let color1 = rColor("#");
-  let color2 = rColor("#");
-  let angle = "to right";
-  let gradientColor =
-    "linear-gradient(" + angle + "," + color1 + "," + color2 + ")";
-  //Inserisco il colore generato come background color del body
-  document.body.style.background = gradientColor;
+  let Color1 = populate("#");
+  let Color2 = populate("#");
+  var angle = "to right";
+
+  let gradient =
+    "linear-gradient(" + angle + "," + Color1 + ", " + Color2 + ")";
+  document.body.style.background = gradient;
 }
 function reset() {
   current_Time.textContent = "00:00";
@@ -129,14 +147,14 @@ function playTrack() {
   isPlaying = true;
   trackArt.classList.add("rotate");
   waves.classList.add("loader");
-  playBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+  playPauseBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
 }
 function pauseTrack() {
   currentTrack.pause();
   isPlaying = false;
   trackArt.classList.remove("rotate");
   waves.classList.remove("loader");
-  playBtn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+  playPauseBtn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
 }
 function nextTrack() {
   if (trackI < musicList.length - 1 && isRandom === false) {
