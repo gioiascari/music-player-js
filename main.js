@@ -37,19 +37,25 @@ const musicList = [
     artist: "Frank Sinatra",
     song: "That's Life",
     audio: "audio/thats-life.mp3",
-    image: "img/faded.png",
+    image: "img/franksinatra.jpg",
   },
   {
     artist: "Mattafix",
     song: "Big City Life",
     audio: "audio/big-city-life.mp3",
-    image: "img/faded.png",
+    image: "img/mattafix.jpg",
   },
   {
     artist: "Eminem",
     song: "Just Lose It",
     audio: "audio/just-lose-it.mp3",
-    image: "img/faded.png",
+    image: "img/eminem.jpg",
+  },
+  {
+    artist: "Moby",
+    song: "Porcelain",
+    audio: "audio/porcelain.mp3",
+    image: "img/moby.jpg",
   },
 ];
 
