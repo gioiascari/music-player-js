@@ -115,7 +115,7 @@ function randomColor() {
   }
   let Color1 = populate("#");
   let Color2 = populate("#");
-  var angle = "to right";
+  let angle = "to right";
 
   let gradient =
     "linear-gradient(" + angle + "," + Color1 + ", " + Color2 + ")";
